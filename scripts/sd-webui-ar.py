@@ -214,7 +214,11 @@ class AspectRatioScript(scripts.Script):
         return scripts.AlwaysVisible
 
     def ui(self, is_img2img):
-        with gr.Column(
+        # with gr.Column(
+        #    elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
+        with gr.Group(), gr.Accordion( # change extension UI to use accordion(closed by default) for non-invasive usability.
+            "Aspect Ratio picker", 
+            open=False,
             elem_id=f'{"img" if is_img2img else "txt"}2img_container_aspect_ratio'
         ):
             self.read_aspect_ratios()
